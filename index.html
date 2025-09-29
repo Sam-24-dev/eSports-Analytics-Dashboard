@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eSports Analytics Dashboard LATAM | Samir Caizapasto</title>
+    
+    <!-- Bootstrap 5.3 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- FontAwesome 6.4 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="gaming-logo">
+                <i class="fas fa-gamepad"></i>
+            </div>
+            <div class="loading-text">Loading Analytics...</div>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Dashboard -->
+    <div id="dashboard" class="dashboard-container">
+        <!-- Hero Section -->
+        <header class="hero-section">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-8">
+                        <div class="hero-content">
+                            <div class="gaming-logo-header">
+                                <i class="fas fa-trophy"></i>
+                                <span class="logo-text">eSports Analytics</span>
+                            </div>
+                            <h1 class="hero-title">Dashboard LATAM</h1>
+                            <p class="hero-subtitle">Data-Driven Insights for Competitive Gaming</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="hero-stats">
+                            <div class="stat-item">
+                                <span class="stat-number" id="hero-teams">15</span>
+                                <span class="stat-label">Equipos</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number" id="hero-players">33</span>
+                                <span class="stat-label">Jugadores</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- KPI Cards Section -->
+        <section class="kpi-section">
+            <div class="container">
+                <div class="row g-4" id="kpi-cards">
+                    <!-- KPI cards will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Charts Section -->
+        <section class="charts-section">
+            <div class="container">
+                <div class="row g-4">
+                    <div class="col-lg-4">
+                        <div class="chart-card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-chart-pie"></i> Distribución por País</h3>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="countryChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="chart-card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-chart-bar"></i> Ranking de Premios por País</h3>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="prizesChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-4 mt-4">
+                    <div class="col-12">
+                        <div class="chart-card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-chart-line"></i> Evolución de Performance 2024 vs 2025</h3>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="evolutionChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tables Section -->
+        <section class="tables-section">
+            <div class="container">
+                <div class="row g-4">
+                    <div class="col-lg-6">
+                        <div class="table-card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-flag"></i> Ranking por País</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table" id="country-ranking-table">
+                                        <thead>
+                                            <tr>
+                                                <th>País</th>
+                                                <th>Equipos</th>
+                                                <th>Premios</th>
+                                                <th>Progreso</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Populated by JavaScript -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="table-card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-users"></i> Top Equipos</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table" id="top-teams-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Equipo</th>
+                                                <th>País</th>
+                                                <th>Premios</th>
+                                                <th>Posición</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Populated by JavaScript -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-4 mt-4">
+                    <div class="col-lg-6">
+                        <div class="table-card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-star"></i> Mejores Jugadores 2024</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table" id="top-players-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Jugador</th>
+                                                <th>País</th>
+                                                <th>Performance</th>
+                                                <th>Rating</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Populated by JavaScript -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="table-card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-trending-up"></i> Evolución de Jugadores</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table" id="player-evolution-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Jugador</th>
+                                                <th>2024</th>
+                                                <th>2025</th>
+                                                <th>Cambio</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Populated by JavaScript -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Competitions Section -->
+        <section class="competitions-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2><i class="fas fa-trophy"></i> Competencias Activas</h2>
+                    <p>Torneos internacionales y nacionales en curso</p>
+                </div>
+                <div class="row g-4" id="competitions-grid">
+                    <!-- Competition cards will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Insights Section -->
+        <section class="insights-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2><i class="fas fa-lightbulb"></i> Análisis Destacados</h2>
+                    <p>Insights clave del ecosistema eSports LATAM</p>
+                </div>
+                <div class="row g-4" id="insights-grid">
+                    <!-- Insights will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Author Section -->
+        <section class="author-section">
+            <div class="container">
+                <div class="author-card">
+                    <div class="row align-items-center">
+                        <div class="col-lg-8">
+                            <div class="author-info">
+                                <div class="author-avatar">
+                                    <i class="fas fa-user-graduate"></i>
+                                </div>
+                                <div class="author-details">
+                                    <h3>Samir Caizapasto</h3>
+                                    <p class="author-title">ESPOL Bootcamp - Data-Driven Decision Specialist</p>
+                                    <p class="author-description">
+                                        Showcasing SQL optimization + Frontend development skills through 
+                                        interactive data visualization and modern web design.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="author-links">
+                                <a href="#" class="btn btn-primary">
+                                    <i class="fab fa-github"></i> GitHub Repository
+                                </a>
+                                <a href="#" class="btn btn-outline-primary">
+                                    <i class="fab fa-linkedin"></i> LinkedIn Profile
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

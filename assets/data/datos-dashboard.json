@@ -1,0 +1,281 @@
+{
+  "kpis_principales": {
+    "total_equipos": 15,
+    "total_jugadores": 33,
+    "total_premios": 325000,
+    "paises_representados": 8,
+    "competencias_activas": 5,
+    "promedio_edad": 23.2,
+    "competencias_internacionales": 2,
+    "competencias_nacionales": 3
+  },
+  "ranking_paises": [
+    {
+      "pais": "Ecuador",
+      "total_equipos": 4,
+      "premios_totales": 110000,
+      "promedio_por_equipo": 27500
+    },
+    {
+      "pais": "Colombia",
+      "total_equipos": 2,
+      "premios_totales": 50000,
+      "promedio_por_equipo": 25000
+    },
+    {
+      "pais": "Chile",
+      "total_equipos": 3,
+      "premios_totales": 43000,
+      "promedio_por_equipo": 14333.33
+    },
+    {
+      "pais": "Bolivia",
+      "total_equipos": 1,
+      "premios_totales": 35000,
+      "promedio_por_equipo": 35000
+    },
+    {
+      "pais": "Perú",
+      "total_equipos": 2,
+      "premios_totales": 30000,
+      "promedio_por_equipo": 15000
+    },
+    {
+      "pais": "Argentina",
+      "total_equipos": 1,
+      "premios_totales": 25000,
+      "promedio_por_equipo": 25000
+    },
+    {
+      "pais": "Venezuela",
+      "total_equipos": 1,
+      "premios_totales": 20000,
+      "promedio_por_equipo": 20000
+    },
+    {
+      "pais": "México",
+      "total_equipos": 1,
+      "premios_totales": 12000,
+      "promedio_por_equipo": 12000
+    }
+  ],
+  "top_jugadores_2024": [
+    {
+      "nombre": "Carlos Hernández",
+      "nacionalidad": "Ecuador",
+      "performance_2024": 75.0,
+      "performance_2025": null,
+      "tendencia": "Sin datos 2025"
+    },
+    {
+      "nombre": "Alejandro Cárdenas",
+      "nacionalidad": "Ecuador",
+      "performance_2024": 75.0,
+      "performance_2025": null,
+      "tendencia": "Sin cambios"
+    },
+    {
+      "nombre": "Fernando López",
+      "nacionalidad": "Chile",
+      "performance_2024": 74.0,
+      "performance_2025": null,
+      "tendencia": "Sin datos 2025"
+    },
+    {
+      "nombre": "Andrés Ramírez",
+      "nacionalidad": "Ecuador",
+      "performance_2024": 72.0,
+      "performance_2025": null,
+      "tendencia": "Sin datos 2025"
+    },
+    {
+      "nombre": "Adrián Vega",
+      "nacionalidad": "Colombia",
+      "performance_2024": 71.4,
+      "performance_2025": null,
+      "tendencia": "Sin datos 2025"
+    }
+  ],
+  "evolucion_jugadores": [
+    {
+      "nombre": "Julián Torres",
+      "nacionalidad": "Perú",
+      "performance_2024": 58.3,
+      "performance_2025": 90.0,
+      "tendencia": "Mejoró",
+      "mejora": 31.7
+    },
+    {
+      "nombre": "Santiago Vidal",
+      "nacionalidad": "Chile",
+      "performance_2024": 60.9,
+      "performance_2025": 68.4,
+      "tendencia": "Mejoró",
+      "mejora": 7.5
+    },
+    {
+      "nombre": "Rafael Oliveira",
+      "nacionalidad": "Venezuela",
+      "performance_2024": 50.0,
+      "performance_2025": 72.2,
+      "tendencia": "Mejoró",
+      "mejora": 22.2
+    },
+    {
+      "nombre": "Ricardo Flores",
+      "nacionalidad": "Colombia",
+      "performance_2024": 65.2,
+      "performance_2025": 73.3,
+      "tendencia": "Mejoró",
+      "mejora": 8.1
+    },
+    {
+      "nombre": "Pablo Fernández",
+      "nacionalidad": "Ecuador",
+      "performance_2024": 68.0,
+      "performance_2025": 31.3,
+      "tendencia": "Empeoró",
+      "perdida": -36.7
+    }
+  ],
+  "analisis_roles": [
+    {
+      "rol": "Titular",
+      "total_participaciones": 41,
+      "jugadores_unicos": 30,
+      "promedio_performance": 59.86
+    },
+    {
+      "rol": "Suplente",
+      "total_participaciones": 3,
+      "jugadores_unicos": 3,
+      "promedio_performance": 62.10
+    }
+  ],
+  "top_equipos": [
+    {
+      "nombre": "Lobos Urbanos",
+      "pais": "Ecuador",
+      "competencias_participadas": 1,
+      "posicion_promedio": 1.0,
+      "premios_totales": 45000
+    },
+    {
+      "nombre": "Leones",
+      "pais": "Colombia",
+      "competencias_participadas": 1,
+      "posicion_promedio": 1.0,
+      "premios_totales": 35000
+    },
+    {
+      "nombre": "Halcones del Sur",
+      "pais": "Chile",
+      "competencias_participadas": 1,
+      "posicion_promedio": 1.0,
+      "premios_totales": 25000
+    },
+    {
+      "nombre": "Guerreros Andinos",
+      "pais": "Ecuador",
+      "competencias_participadas": 1,
+      "posicion_promedio": 1.0,
+      "premios_totales": 25000
+    },
+    {
+      "nombre": "Guerreros del Sol",
+      "pais": "Ecuador",
+      "competencias_participadas": 1,
+      "posicion_promedio": 1.0,
+      "premios_totales": 20000
+    }
+  ],
+  "competencias": [
+    {
+      "nombre": "Masters Latam 2025",
+      "tipo": "Internacional",
+      "ubicacion": "Buenos Aires",
+      "equipos_participantes": 3,
+      "premio_total": 100000,
+      "premio_promedio_por_equipo": 33333.33
+    },
+    {
+      "nombre": "Liga del Pacífico 2024",
+      "tipo": "Internacional",
+      "ubicacion": "Lima",
+      "equipos_participantes": 3,
+      "premio_total": 75000,
+      "premio_promedio_por_equipo": 25000
+    },
+    {
+      "nombre": "Torneo del Caribe 2024",
+      "tipo": "Nacional",
+      "ubicacion": "Cartagena",
+      "equipos_participantes": 3,
+      "premio_total": 60000,
+      "premio_promedio_por_equipo": 20000
+    },
+    {
+      "nombre": "Copa Andina 2024",
+      "tipo": "Nacional",
+      "ubicacion": "Quito",
+      "equipos_participantes": 3,
+      "premio_total": 50000,
+      "premio_promedio_por_equipo": 16666.67
+    },
+    {
+      "nombre": "Challenger Sur 2025",
+      "tipo": "Nacional",
+      "ubicacion": "Santiago",
+      "equipos_participantes": 3,
+      "premio_total": 40000,
+      "premio_promedio_por_equipo": 13333.33
+    }
+  ],
+  "jugadores_veteranos": [
+    {
+      "equipo": "Leones",
+      "pais": "Colombia",
+      "jugador_veterano": "Diego Silva",
+      "edad": 26,
+      "performance_2024": 52.6
+    },
+    {
+      "equipo": "Piratas del Caribe",
+      "pais": "Colombia",
+      "jugador_veterano": "Adrián Vega",
+      "edad": 25,
+      "performance_2024": 71.4
+    },
+    {
+      "equipo": "Cóndores del Pacífico",
+      "pais": "Perú",
+      "jugador_veterano": "Julián Torres",
+      "edad": 25,
+      "performance_2024": 58.3
+    },
+    {
+      "equipo": "Incas de Hierro",
+      "pais": "Perú",
+      "jugador_veterano": "Camilo Ruiz",
+      "edad": 25,
+      "performance_2024": 64.0
+    },
+    {
+      "equipo": "Caimanes del Orinoco",
+      "pais": "Venezuela",
+      "jugador_veterano": "Rafael Oliveira",
+      "edad": 25,
+      "performance_2024": 50.0
+    }
+  ],
+  "metricas_resumen": {
+    "mejor_equipo_internacional": "Lobos Urbanos",
+    "mejor_jugador_2024": "Carlos Hernández",
+    "mayor_mejora_2025": "Julián Torres",
+    "pais_dominante": "Ecuador",
+    "competencia_mas_competitiva": "Masters Latam 2025",
+    "promedio_performance_general": 59.86,
+    "total_premios_internacionales": 175000,
+    "total_premios_nacionales": 150000
+  }
+}
