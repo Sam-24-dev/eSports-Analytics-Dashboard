@@ -195,7 +195,7 @@ mysql -u root -p < database/esportsespol_Grupo5.sql
 
 **Autor:** Samir Leonardo Caizapasto Hernández  
 **Institución:** ESPOL - Bootcamp Data-Driven Decision Specialist  
-**LinkedIn:** [linkedin.com/in/samircaizapasto](https://www.linkedin.com/in/samircaizapasto/)  
+**LinkedIn:** [linkedin.com/in/samir-caizapasto](https://www.linkedin.com/in/samircaizapasto/)  
 **GitHub:** [github.com/Sam-24-dev](https://github.com/Sam-24-dev)  
 **Email:** samir.leonardo.caizapasto04@gmail.com
 
