@@ -1,8 +1,12 @@
-# Environment variables (credentials)
+# ==========================
+# Environment / Credentials
+# ==========================
 src/etl/.env
 .env
 
+# ==========================
 # Python
+# ==========================
 __pycache__/
 *.py[cod]
 *.egg-info/
@@ -12,18 +16,36 @@ build/
 .venv/
 venv/
 
+# ==========================
+# AI / IDE Agent configs
+# ==========================
+.agent/
+.claude/
+.codebuddy/
+.codex/
+.continue/
+.cursor/
+.gemini/
+.github/prompts/
+.kiro/
+.opencode/
+.qoder/
+.roo/
+.trae/
+.windsurf/
+tools.yaml
+PLAN_MEJORAS.md
+
+# ==========================
 # IDE
+# ==========================
 .vscode/
 .idea/
 *.swp
 *.swo
 
+# ==========================
 # OS
+# ==========================
 .DS_Store
 Thumbs.db
-
-# Data (raw/processed are gitignored, JSON output is committed)
-data/raw/*
-data/processed/*
-!data/raw/.gitkeep
-!data/processed/.gitkeep
