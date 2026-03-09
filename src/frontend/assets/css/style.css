@@ -724,8 +724,35 @@ body {
         padding: var(--spacing-md);
     }
     
+    /* Force KPIs to 2-per-row on mobile (never single column) */
+    #kpi-cards > .col-lg-3 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+
+    .kpi-icon {
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .kpi-number {
+        font-size: 1.5rem;
+    }
+
+    .kpi-label {
+        font-size: 0.75rem;
+    }
+
+    .kpi-card {
+        padding: var(--spacing-sm) var(--spacing-xs);
+    }
+
     .author-card {
         padding: var(--spacing-lg);
+    }
+
+    .author-details h3 {
+        font-size: 1.3rem;
     }
 }
 
