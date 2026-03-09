@@ -23,6 +23,8 @@ import pandas as pd
 from dotenv import load_dotenv
 from mysql.connector import Error as MySQLError
 
+# Ensure validators module is importable regardless of working directory
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from validators import VALIDATOR_REGISTRY
 
 # ---------------------------------------------------------------------------
@@ -333,14 +335,15 @@ def extract(conn: mysql.connector.MySQLConnection) -> Dict[str, pd.DataFrame]:
 
 
 # ---------------------------------------------------------------------------
-# VALIDATE (Data Quality Gates — Pandera)
+# VALIDATE (Data Quality Gates)
 # ---------------------------------------------------------------------------
 
 def _cast_decimals(raw: Dict[str, pd.DataFrame]) -> Dict[str, pd.DataFrame]:
-    """Cast ``Decimal`` columns to ``float`` so Pandera can validate them.
+    """Cast ``Decimal`` columns to ``float`` before validation and export.
 
-    MySQL returns monetary and percentage columns as ``Decimal``,
-    which Pandera cannot coerce natively.
+    MySQL returns monetary and percentage columns as ``Decimal``, which are
+    converted to ``float`` for consistent handling by the validator registry
+    and for JSON serialization.
 
     Args:
         raw: Dictionary of section-name → DataFrame.

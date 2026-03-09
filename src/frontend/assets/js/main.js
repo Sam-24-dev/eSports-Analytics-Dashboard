@@ -102,7 +102,7 @@ function getInlineData() {
             {"nombre": "Lobos Urbanos", "pais": "Ecuador", "premios_totales": 45000, "posicion_promedio": 1.0}
         ],
         "competencias": [
-            {"nombre": "Masters Latam 2025", "tipo": "Internacional", "ubicacion": "Buenos Aires", "premio_total": 100000}
+            {"nombre": "Masters Latam 2025", "tipo": "Internacional", "ubicacion": "Buenos Aires", "premio_total": 100000, "equipos_participantes": 0}
         ],
         "metricas_resumen": {
             "mejor_equipo_internacional": "Lobos Urbanos",
@@ -490,7 +490,7 @@ function populatePlayerEvolutionTable() {
         <tr>
             <td><strong>${player.nombre}</strong></td>
             <td>${player.performance_2024.toFixed(1)}%</td>
-            <td>${player.performance_2025 ? player.performance_2025.toFixed(1) + '%' : 'N/A'}</td>
+            <td>${player.performance_2025 !== null && player.performance_2025 !== undefined ? player.performance_2025.toFixed(1) + '%' : 'N/A'}</td>
             <td>
                 ${getTrendIndicator(player)}
             </td>
@@ -591,7 +591,7 @@ function getPerformanceRating(performance) {
 }
 
 function getTrendIndicator(player) {
-    if (!player.performance_2025) {
+    if (player.performance_2025 == null) {
         return '<span class="trend-indicator neutral"><i class="fas fa-minus"></i> Sin datos</span>';
     }
     
@@ -629,7 +629,9 @@ window.addEventListener('resize', function() {
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
+        const href = this.getAttribute('href');
+        if (!href || href === '#') return;
+        const target = document.querySelector(href);
         if (target) {
             target.scrollIntoView({
                 behavior: 'smooth',
@@ -650,9 +652,10 @@ const chartObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             const chartId = entry.target.id;
-            if (chartId && !charts[chartId]) {
-                // Initialize chart if not already done
+            if (chartId && !charts[chartId] && dashboardData) {
+                // Initialize chart only if data is loaded and not already created
                 setTimeout(() => {
+                    if (charts[chartId]) return; // avoid double-init
                     switch(chartId) {
                         case 'countryChart':
                             createCountryChart();
