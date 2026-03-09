@@ -1,0 +1,96 @@
+name: ETL Pipeline + Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:   # Allows manual trigger from GitHub UI
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # ---------------------------------------------------------------
+  # Job 1: Run ETL Pipeline (Extract → Validate → Transform → Load)
+  # ---------------------------------------------------------------
+  etl:
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: etl_ci_password
+          MYSQL_DATABASE: esportsespol
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h 127.0.0.1"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Load database schema and data
+        run: |
+          mysql -h 127.0.0.1 -u root -petl_ci_password esportsespol < database/schema.sql
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+          cache-dependency-path: src/etl/requirements.txt
+
+      - name: Install Python dependencies
+        run: pip install -r src/etl/requirements.txt
+
+      - name: Create .env for ETL
+        run: |
+          cat > src/etl/.env << EOF
+          MYSQL_HOST=127.0.0.1
+          MYSQL_PORT=3306
+          MYSQL_USER=root
+          MYSQL_PASSWORD=etl_ci_password
+          MYSQL_DATABASE=esportsespol
+          EOF
+
+      - name: Run ETL Pipeline (Extract → Validate → Transform → Load)
+        working-directory: src/etl
+        run: python pipeline.py
+
+      - name: Verify generated JSON exists
+        run: |
+          echo "--- Generated JSON ---"
+          ls -la src/frontend/assets/data/datos-dashboard.json
+          echo "--- First 5 lines ---"
+          head -5 src/frontend/assets/data/datos-dashboard.json
+
+      - name: Upload frontend artifact for deploy
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: src/frontend
+
+  # ---------------------------------------------------------------
+  # Job 2: Deploy to GitHub Pages
+  # ---------------------------------------------------------------
+  deploy:
+    needs: etl
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
