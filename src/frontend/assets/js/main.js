@@ -883,6 +883,139 @@ function debounce(fn, wait) {
     };
 }
 
+const COMPACT_FILTER_BREAKPOINT = 1024;
+let filterSearchPanelOpen = false;
+
+function isCompactFilterViewport() {
+    return typeof window !== 'undefined' && window.innerWidth <= COMPACT_FILTER_BREAKPOINT;
+}
+
+function updateCompactFilterMetrics() {
+    const root = document.documentElement;
+    const filterBar = document.getElementById('filter-bar');
+
+    if (!root || !filterBar) return;
+
+    if (!isCompactFilterViewport()) {
+        root.style.removeProperty('--compact-filter-bar-height');
+        return;
+    }
+
+    const applyHeight = function () {
+        const nextHeight = Math.ceil(filterBar.getBoundingClientRect().height || filterBar.offsetHeight || 0);
+        if (nextHeight > 0) {
+            root.style.setProperty('--compact-filter-bar-height', `${nextHeight}px`);
+        }
+    };
+
+    if (typeof window !== 'undefined' && typeof window.requestAnimationFrame === 'function') {
+        window.requestAnimationFrame(applyHeight);
+        return;
+    }
+
+    applyHeight();
+}
+
+function setFilterSearchPanelOpen(shouldOpen, options = {}) {
+    const filterBar = document.getElementById('filter-bar');
+    const searchPanel = document.getElementById('filter-search-panel');
+    const toggle = document.getElementById('toggle-search-panel');
+    const suggestionsBox = document.getElementById('search-suggestions');
+
+    if (!filterBar || !searchPanel || !toggle) return;
+
+    const compactMode = isCompactFilterViewport();
+    const forced = options.force === true;
+
+    if (!compactMode) {
+        filterBar.classList.remove('filter-bar--search-open');
+        searchPanel.hidden = false;
+        searchPanel.setAttribute('aria-hidden', 'false');
+        toggle.hidden = true;
+        toggle.setAttribute('aria-hidden', 'true');
+        toggle.setAttribute('aria-expanded', 'true');
+        updateCompactFilterMetrics();
+        return;
+    }
+
+    const nextOpen = forced ? Boolean(shouldOpen) : Boolean(shouldOpen);
+    filterSearchPanelOpen = nextOpen;
+    filterBar.classList.toggle('filter-bar--search-open', nextOpen);
+    searchPanel.hidden = !nextOpen;
+    searchPanel.setAttribute('aria-hidden', String(!nextOpen));
+    toggle.hidden = false;
+    toggle.setAttribute('aria-hidden', 'false');
+    toggle.setAttribute('aria-expanded', String(nextOpen));
+    toggle.classList.toggle('active', nextOpen);
+
+    if (!nextOpen && suggestionsBox) {
+        suggestionsBox.classList.add('d-none');
+    }
+
+    updateCompactFilterMetrics();
+}
+
+function syncResponsiveFilterBar(options = {}) {
+    const searchInput = document.getElementById('search-player');
+    const hasSearchValue = Boolean((searchInput?.value || '').trim());
+    const forcedState = Object.prototype.hasOwnProperty.call(options, 'open')
+        ? Boolean(options.open)
+        : (hasSearchValue || filterSearchPanelOpen);
+    setFilterSearchPanelOpen(forcedState, { force: true });
+}
+
+function initResponsiveFilterBar() {
+    const toggle = document.getElementById('toggle-search-panel');
+    const searchInput = document.getElementById('search-player');
+
+    if (toggle && !toggle.dataset.bound) {
+        toggle.addEventListener('click', function () {
+            const nextOpen = !(toggle.getAttribute('aria-expanded') === 'true');
+            setFilterSearchPanelOpen(nextOpen, { force: true });
+            if (nextOpen && searchInput) {
+                window.setTimeout(function () {
+                    searchInput.focus();
+                }, 20);
+            }
+        });
+        toggle.dataset.bound = 'true';
+    }
+
+    syncResponsiveFilterBar();
+}
+
+function getStickyChromeOffset() {
+    let offset = 0;
+    const navbar = document.getElementById('main-navbar');
+    const filterBar = document.getElementById('filter-bar');
+    const resolveComputedStyle = function (element) {
+        if (!element) return null;
+        if (typeof window !== 'undefined' && typeof window.getComputedStyle === 'function') {
+            return window.getComputedStyle(element);
+        }
+        if (typeof getComputedStyle === 'function') {
+            return getComputedStyle(element);
+        }
+        return { position: 'fixed' };
+    };
+
+    if (navbar) {
+        const style = resolveComputedStyle(navbar);
+        if (style.position === 'fixed' || style.position === 'sticky') {
+            offset += navbar.getBoundingClientRect().height || 0;
+        }
+    }
+
+    if (filterBar) {
+        const style = resolveComputedStyle(filterBar);
+        if (style.position === 'fixed' || style.position === 'sticky') {
+            offset += filterBar.getBoundingClientRect().height || 0;
+        }
+    }
+
+    return offset;
+}
+
 // ===== NAVIGATION, FILTERS & SEARCH =====
 function initNavigation() {
     // --- Hamburger toggle ---
@@ -935,9 +1068,8 @@ function initNavigation() {
     // --- Populate filter dropdowns ---
     if (!filterIndex) filterIndex = buildFilterIndex(dashboardData || currentData);
     populateFilters();
-    initSmartSearch();
 
-    // --- Filter event listeners ---
+    // --- Filter elements ---
     const countryFilter = document.getElementById('filter-country');
     const competitionFilter = document.getElementById('filter-competition');
     const searchInput = document.getElementById('search-player');
@@ -949,6 +1081,9 @@ function initNavigation() {
     if (params.get('competition') && competitionFilter) competitionFilter.value = params.get('competition');
     if (params.get('search') && searchInput) searchInput.value = params.get('search');
     initialApplyReason = params.get('search') ? 'deep-link' : 'filters-change';
+
+    initResponsiveFilterBar();
+    initSmartSearch();
 
     if (!debouncedApplyFilters) {
         debouncedApplyFilters = debounce(function () {
@@ -984,6 +1119,8 @@ function initSmartSearch() {
 
     let currentSuggestions = [];
     let activeSuggestionIndex = -1;
+    let pointerSelectionInProgress = false;
+    let lastSelectionAt = 0;
 
     function escapeHtml(value) {
         return String(value ?? '')
@@ -1002,6 +1139,7 @@ function initSmartSearch() {
     function selectSuggestionByIndex(index) {
         const suggestion = currentSuggestions[index];
         if (!suggestion) return;
+        lastSelectionAt = Date.now();
         searchInput.value = suggestion.name;
         hideSuggestions();
         applyFilters({ reason: 'search-select' });
@@ -1053,18 +1191,34 @@ function initSmartSearch() {
         `;
         activeSuggestionIndex = -1;
 
+        const pointerSelectionEvent = typeof window !== 'undefined' && 'PointerEvent' in window
+            ? 'pointerdown'
+            : 'mousedown';
+
         suggestionsBox.querySelectorAll('.search-suggestion-item').forEach(function (item) {
             item.addEventListener('mouseenter', function () {
                 activeSuggestionIndex = Number(item.dataset.index);
                 syncActiveSuggestion();
             });
+            item.addEventListener(pointerSelectionEvent, function (event) {
+                event.preventDefault();
+                pointerSelectionInProgress = true;
+                selectSuggestionByIndex(Number(item.dataset.index));
+                window.setTimeout(function () {
+                    pointerSelectionInProgress = false;
+                }, 180);
+            });
             item.addEventListener('click', function () {
+                if (Date.now() - lastSelectionAt < 250) {
+                    return;
+                }
                 selectSuggestionByIndex(Number(item.dataset.index));
             });
         });
     }
 
     searchInput.addEventListener('focus', () => {
+        syncResponsiveFilterBar({ open: true });
         if (!shouldOpenSuggestions(searchInput.value)) {
             hideSuggestions();
             return;
@@ -1083,7 +1237,11 @@ function initSmartSearch() {
     });
 
     searchInput.addEventListener('blur', () => {
-        setTimeout(hideSuggestions, 120);
+        window.setTimeout(function () {
+            if (!pointerSelectionInProgress) {
+                hideSuggestions();
+            }
+        }, 120);
     });
 
     searchInput.addEventListener('keydown', (e) => {
@@ -1140,10 +1298,9 @@ function scrollToPlayerModule() {
     const target = document.querySelector('.player-module-card');
     if (!target || typeof window === 'undefined') return;
 
-    const navbarHeight = document.getElementById('main-navbar')?.getBoundingClientRect?.().height || 0;
     const currentOffset = window.pageYOffset || window.scrollY || 0;
     const targetTop = target.getBoundingClientRect().top + currentOffset;
-    const top = Math.max(targetTop - navbarHeight - 12, 0);
+    const top = Math.max(targetTop - getStickyChromeOffset() - 12, 0);
 
     if (typeof window.scrollTo === 'function') {
         window.scrollTo({ top: top, behavior: 'smooth' });
@@ -1253,6 +1410,8 @@ function clearFilters() {
     if (countryFilter) countryFilter.value = '';
     if (competitionFilter) competitionFilter.value = '';
     if (searchInput) searchInput.value = '';
+    filterSearchPanelOpen = false;
+    syncResponsiveFilterBar({ open: false });
 
     // Delegate the entire resetting of KPIs, Charts, Titles, and Tables to the central engine
     applyFilters({ reason: 'clear' });
@@ -6713,6 +6872,7 @@ function addAnimations() {
 
 // ===== RESPONSIVE CHART HANDLING =====
 window.addEventListener('resize', function () {
+    syncResponsiveFilterBar();
     Object.values(charts).forEach(chart => {
         if (chart) {
             chart.resize();
@@ -6728,9 +6888,11 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         if (!href || href === '#') return;
         const target = document.querySelector(href);
         if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
+            const targetTop = target.getBoundingClientRect().top + (window.pageYOffset || window.scrollY || 0);
+            const top = Math.max(targetTop - getStickyChromeOffset() - 12, 0);
+            window.scrollTo({
+                top: top,
+                behavior: 'smooth'
             });
         }
     });

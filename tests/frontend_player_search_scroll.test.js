@@ -142,8 +142,8 @@ function readMainSource() {
   );
   assert.match(
     source,
-    /searchInput\.addEventListener\('blur',\s*\(\)\s*=>\s*\{[\s\S]*setTimeout\(hideSuggestions,\s*120\);[\s\S]*\}\);/,
-    'blur should close suggestions after allowing click selection'
+    /searchInput\.addEventListener\('blur',\s*\(\)\s*=>\s*\{[\s\S]*setTimeout\(function \(\)\s*\{[\s\S]*if \(!pointerSelectionInProgress\)\s*\{[\s\S]*hideSuggestions\(\);[\s\S]*\}[\s\S]*\},\s*120\);[\s\S]*\}\);/,
+    'blur should close suggestions only after touch/click selection has had time to resolve'
   );
 })();
 
