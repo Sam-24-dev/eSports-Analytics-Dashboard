@@ -1,4 +1,4 @@
-﻿import unittest
+import unittest
 
 from src.etl.ml_projection_expected_values import build_ml_projection_view
 
@@ -258,4 +258,4 @@ class TestMLProjectionExpectedValues(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    unittest.main()
+    unittest.main()

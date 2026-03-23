@@ -1,4 +1,4 @@
-﻿import unittest
+import unittest
 
 from src.etl.competition_section_expected_values import (
     build_competition_section_view,
@@ -131,4 +131,4 @@ class TestCompetitionSectionExpectedValues(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    unittest.main()
+    unittest.main()

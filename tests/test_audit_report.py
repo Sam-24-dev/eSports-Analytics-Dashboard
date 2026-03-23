@@ -1,4 +1,4 @@
-﻿import unittest
+import unittest
 
 from src.etl.pipeline import _build_audit_report_content
 
@@ -77,4 +77,4 @@ class TestAuditReport(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    unittest.main()
+    unittest.main()

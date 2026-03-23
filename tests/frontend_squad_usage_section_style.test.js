@@ -1,4 +1,4 @@
-﻿const assert = require('assert');
+const assert = require('assert');
 const fs = require('fs');
 const path = require('path');
 
@@ -81,5 +81,5 @@ const stylesheet = fs.readFileSync(stylePath, 'utf8');
   );
 })();
 
-console.log('frontend_squad_usage_section_style tests passed');
-
+console.log('frontend_squad_usage_section_style tests passed');
+

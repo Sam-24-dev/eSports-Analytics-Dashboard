@@ -1,4 +1,4 @@
-﻿import unittest
+import unittest
 import pandas as pd
 import numpy as np
 from src.ml.predictor import (
@@ -126,4 +126,4 @@ class TestPredictor(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    unittest.main()
+    unittest.main()

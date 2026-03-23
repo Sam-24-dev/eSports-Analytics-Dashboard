@@ -1,4 +1,4 @@
-﻿import unittest
+import unittest
 import pandas as pd
 
 from src.etl.validators import validate_with_pandera

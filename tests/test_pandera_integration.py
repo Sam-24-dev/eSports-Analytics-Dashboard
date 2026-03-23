@@ -1,4 +1,4 @@
-﻿import unittest
+import unittest
 import pandas as pd
 
 from src.etl.pipeline import validate
@@ -23,4 +23,4 @@ class TestPanderaIntegration(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    unittest.main()
+    unittest.main()

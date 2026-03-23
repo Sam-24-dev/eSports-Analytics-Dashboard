@@ -10,7 +10,7 @@ from src.etl.team_experience_expected_values import (
 class TestTeamExperienceExpectedValues(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-      cls.snapshot = load_dashboard_snapshot()
+        cls.snapshot = load_dashboard_snapshot()
 
     def test_global_view_uses_compare_mode(self):
         view = build_team_experience_view(self.snapshot)

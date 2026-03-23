@@ -166,10 +166,10 @@ class TestContractSchema(unittest.TestCase):
         self.assertGreater(len(data["teams_catalog"]), 0, "teams_catalog should not be empty")
 
     def test_datos_dashboard_matches_schema(self):
-        schema_path = Path("docs/data_contract.schema.json")
+        schema_path = Path("src/etl/data_contract.schema.json")
         data_path = Path("src/frontend/assets/data/datos-dashboard.json")
 
-        self.assertTrue(schema_path.exists(), "Missing schema file: docs/data_contract.schema.json")
+        self.assertTrue(schema_path.exists(), "Missing schema file: src/etl/data_contract.schema.json")
         self.assertTrue(data_path.exists(), "Missing data file: datos-dashboard.json")
 
         schema = json.loads(schema_path.read_text(encoding="utf-8"))

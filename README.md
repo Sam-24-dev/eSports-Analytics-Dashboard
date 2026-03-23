@@ -106,7 +106,6 @@ cd eSports-Analytics-Dashboard
 
 # install ETL requirements
 pip install -r src/etl/requirements.txt
-pip install scikit-learn
 
 # generate the dashboard snapshot
 python src/etl/pipeline.py

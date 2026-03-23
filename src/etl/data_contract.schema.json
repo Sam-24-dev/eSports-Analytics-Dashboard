@@ -1,0 +1,4505 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "eSports Dashboard Data Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "main_kpis",
+    "country_ranking",
+    "top_players_2024",
+    "player_evolution",
+    "radar_teamwork",
+    "scatter_age_performance_new",
+    "role_analysis",
+    "squad_usage_summary",
+    "squad_usage_team_breakdown",
+    "team_experience_summary",
+    "team_experience_profiles",
+    "team_experience_leaders",
+    "team_comparison_profiles",
+    "team_comparison_leaders",
+    "player_age_performance_summary",
+    "player_age_performance_bands",
+    "player_age_performance_points",
+    "player_age_performance_leaders",
+    "top_teams",
+    "teams_catalog",
+    "competitions",
+    "veteran_players",
+    "summary_metrics",
+    "competition_cross_filter",
+    "player_competition_mapping",
+    "predictions_2026",
+    "ml_projection_2026_summary",
+    "ml_projection_2026_players",
+    "ml_projection_2026_team_summary",
+    "ml_projection_2026_country_summary",
+    "ml_projection_2026_feature_importance",
+    "filter_ready"
+  ],
+  "properties": {
+    "main_kpis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "total_teams",
+        "total_players",
+        "total_prizes",
+        "countries_represented",
+        "active_competitions",
+        "average_age",
+        "international_competitions",
+        "national_competitions"
+      ],
+      "properties": {
+        "total_teams": {
+          "type": "integer"
+        },
+        "total_players": {
+          "type": "integer"
+        },
+        "total_prizes": {
+          "type": "number"
+        },
+        "countries_represented": {
+          "type": "integer"
+        },
+        "active_competitions": {
+          "type": "integer"
+        },
+        "average_age": {
+          "type": "number"
+        },
+        "international_competitions": {
+          "type": "integer"
+        },
+        "national_competitions": {
+          "type": "integer"
+        }
+      }
+    },
+    "country_ranking": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "country",
+          "total_teams",
+          "total_players",
+          "total_prizes",
+          "active_competitions",
+          "average_age",
+          "international_competitions",
+          "national_competitions"
+        ],
+        "properties": {
+          "country": {
+            "type": "string"
+          },
+          "total_teams": {
+            "type": "integer"
+          },
+          "total_players": {
+            "type": "integer"
+          },
+          "total_prizes": {
+            "type": "number"
+          },
+          "active_competitions": {
+            "type": "integer"
+          },
+          "average_age": {
+            "type": "number"
+          },
+          "international_competitions": {
+            "type": "integer"
+          },
+          "national_competitions": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "top_players_2024": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "nationality",
+          "performance_2024",
+          "performance_2025",
+          "trend"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "nationality": {
+            "type": "string"
+          },
+          "performance_2024": {
+            "type": "number"
+          },
+          "performance_2025": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "trend": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "player_evolution": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "nationality",
+          "performance_2024",
+          "performance_2025",
+          "team_2024",
+          "team_2025",
+          "trend",
+          "improvement",
+          "improvement_pct"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "nationality": {
+            "type": "string"
+          },
+          "performance_2024": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "performance_2025": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "team_2024": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "team_2025": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "trend": {
+            "type": "string"
+          },
+          "improvement": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "improvement_pct": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "decline": {
+            "type": [
+              "number",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "radar_teamwork": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "team",
+          "country",
+          "avg_teamwork",
+          "total_players",
+          "avg_winrate",
+          "total_prizes"
+        ],
+        "properties": {
+          "team": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "avg_teamwork": {
+            "type": "number"
+          },
+          "total_players": {
+            "type": "integer"
+          },
+          "avg_winrate": {
+            "type": "number"
+          },
+          "total_prizes": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "scatter_age_performance_new": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "age",
+          "performance",
+          "nationality",
+          "team"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "age": {
+            "type": "integer"
+          },
+          "performance": {
+            "type": "number"
+          },
+          "nationality": {
+            "type": "string"
+          },
+          "team": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "role_analysis": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "role",
+          "total_participations",
+          "unique_players",
+          "average_performance"
+        ],
+        "properties": {
+          "role": {
+            "type": "string"
+          },
+          "total_participations": {
+            "type": "integer"
+          },
+          "unique_players": {
+            "type": "integer"
+          },
+          "average_performance": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "player_age_performance_summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "players_count",
+        "overall_average_performance_pct",
+        "correlation_value",
+        "correlation_strength",
+        "correlation_direction",
+        "best_age_band",
+        "best_age_band_average_performance_pct"
+      ],
+      "properties": {
+        "players_count": {
+          "type": "integer"
+        },
+        "overall_average_performance_pct": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "correlation_value": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "correlation_strength": {
+          "type": "string",
+          "enum": [
+            "none",
+            "weak",
+            "moderate",
+            "strong",
+            "insufficient"
+          ]
+        },
+        "correlation_direction": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "positive",
+            "negative",
+            "neutral",
+            null
+          ]
+        },
+        "best_age_band": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "20-21",
+            "22-23",
+            "24+",
+            null
+          ]
+        },
+        "best_age_band_average_performance_pct": {
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      }
+    },
+    "player_age_performance_bands": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "age_band",
+          "players_count",
+          "average_performance_pct",
+          "top_player_name",
+          "top_player_team",
+          "top_player_performance_pct"
+        ],
+        "properties": {
+          "age_band": {
+            "type": "string",
+            "enum": [
+              "20-21",
+              "22-23",
+              "24+"
+            ]
+          },
+          "players_count": {
+            "type": "integer"
+          },
+          "average_performance_pct": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "top_player_name": {
+            "type": "string"
+          },
+          "top_player_team": {
+            "type": "string"
+          },
+          "top_player_performance_pct": {
+            "type": [
+              "number",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "player_age_performance_points": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "player_name",
+          "team",
+          "team_country",
+          "player_nationality",
+          "age",
+          "performance_pct",
+          "age_band",
+          "competitions_count"
+        ],
+        "properties": {
+          "player_name": {
+            "type": "string"
+          },
+          "team": {
+            "type": "string"
+          },
+          "team_country": {
+            "type": "string"
+          },
+          "player_nationality": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "age": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "performance_pct": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "age_band": {
+            "type": "string",
+            "enum": [
+              "20-21",
+              "22-23",
+              "24+"
+            ]
+          },
+          "competitions_count": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "player_age_performance_leaders": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "young_standout_player",
+        "young_standout_team",
+        "young_standout_performance_pct",
+        "veteran_standout_player",
+        "veteran_standout_team",
+        "veteran_standout_performance_pct"
+      ],
+      "properties": {
+        "young_standout_player": {
+          "type": "string"
+        },
+        "young_standout_team": {
+          "type": "string"
+        },
+        "young_standout_performance_pct": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "veteran_standout_player": {
+          "type": "string"
+        },
+        "veteran_standout_team": {
+          "type": "string"
+        },
+        "veteran_standout_performance_pct": {
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      }
+    },
+    "top_teams": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "country",
+          "participating_competitions",
+          "average_position",
+          "total_prizes"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "participating_competitions": {
+            "type": "integer"
+          },
+          "average_position": {
+            "type": "number"
+          },
+          "total_prizes": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "teams_catalog": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "country",
+          "participating_competitions",
+          "total_players",
+          "best_position",
+          "total_prizes"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "participating_competitions": {
+            "type": "integer"
+          },
+          "total_players": {
+            "type": "integer"
+          },
+          "best_position": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "total_prizes": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "competitions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "type",
+          "location",
+          "participating_teams",
+          "total_players",
+          "total_prize",
+          "average_prize_per_team",
+          "year",
+          "average_age"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "location": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "participating_teams": {
+            "type": "integer"
+          },
+          "total_players": {
+            "type": "integer"
+          },
+          "total_prize": {
+            "type": "number"
+          },
+          "average_prize_per_team": {
+            "type": "number"
+          },
+          "year": {
+            "type": "integer"
+          },
+          "average_age": {
+            "type": [
+              "number",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "veteran_players": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "team",
+          "country",
+          "veteran_player",
+          "age",
+          "performance_2024"
+        ],
+        "properties": {
+          "team": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "veteran_player": {
+            "type": "string"
+          },
+          "age": {
+            "type": "integer"
+          },
+          "performance_2024": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "summary_metrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "best_international_team",
+        "best_player_2024",
+        "most_improved_2025",
+        "dominant_country",
+        "most_competitive",
+        "overall_average_performance",
+        "total_international_prizes",
+        "total_national_prizes"
+      ],
+      "properties": {
+        "best_international_team": {
+          "type": "string"
+        },
+        "best_player_2024": {
+          "type": "string"
+        },
+        "most_improved_2025": {
+          "type": "string"
+        },
+        "dominant_country": {
+          "type": "string"
+        },
+        "most_competitive": {
+          "type": "string"
+        },
+        "overall_average_performance": {
+          "type": "number"
+        },
+        "total_international_prizes": {
+          "type": "number"
+        },
+        "total_national_prizes": {
+          "type": "number"
+        }
+      }
+    },
+    "competition_cross_filter": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "competition_name",
+          "country",
+          "teams_count",
+          "country_prize",
+          "average_prize_per_team",
+          "players_count",
+          "average_age",
+          "type",
+          "year"
+        ],
+        "properties": {
+          "competition_name": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "teams_count": {
+            "type": "integer"
+          },
+          "country_prize": {
+            "type": "number"
+          },
+          "average_prize_per_team": {
+            "type": "number"
+          },
+          "players_count": {
+            "type": "integer"
+          },
+          "average_age": {
+            "type": "number"
+          },
+          "type": {
+            "type": "string"
+          },
+          "year": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "player_competition_mapping": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "competition_name",
+          "player_name",
+          "team_name"
+        ],
+        "properties": {
+          "competition_name": {
+            "type": "string"
+          },
+          "player_name": {
+            "type": "string"
+          },
+          "team_name": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "filter_ready": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kpis_by_country",
+        "kpis_by_competition",
+        "kpis_by_country_competition",
+        "country_ranking_by_competition",
+        "top_teams_by_competition",
+        "top_players_by_competition",
+        "player_evolution_by_competition",
+        "role_analysis_by_competition",
+        "squad_usage_by_country",
+        "squad_usage_by_competition",
+        "squad_usage_by_country_competition",
+        "squad_usage_team_breakdown_by_country",
+        "squad_usage_team_breakdown_by_competition",
+        "squad_usage_team_breakdown_by_country_competition",
+        "team_experience_leaders_by_country_competition",
+        "team_experience_leaders_by_competition",
+        "team_experience_leaders_by_country",
+        "team_experience_profiles_by_country_competition",
+        "team_experience_profiles_by_competition",
+        "team_experience_profiles_by_country",
+        "team_experience_summary_by_country_competition",
+        "team_experience_summary_by_competition",
+        "team_experience_summary_by_country",
+        "team_comparison_profiles_by_country",
+        "team_comparison_profiles_by_competition",
+        "team_comparison_profiles_by_country_competition",
+        "team_comparison_leaders_by_country",
+        "team_comparison_leaders_by_competition",
+        "team_comparison_leaders_by_country_competition",
+        "player_age_performance_summary_by_country",
+        "player_age_performance_summary_by_competition",
+        "player_age_performance_summary_by_country_competition",
+        "player_age_performance_bands_by_country",
+        "player_age_performance_bands_by_competition",
+        "player_age_performance_bands_by_country_competition",
+        "player_age_performance_points_by_country",
+        "player_age_performance_points_by_competition",
+        "player_age_performance_points_by_country_competition",
+        "player_age_performance_leaders_by_country",
+        "player_age_performance_leaders_by_competition",
+        "player_age_performance_leaders_by_country_competition",
+        "radar_teamwork_by_competition",
+        "scatter_age_performance_by_competition",
+        "veteran_players_by_competition",
+        "players_index",
+        "ml_projection_2026_summary_by_country",
+        "ml_projection_2026_players_by_country",
+        "ml_projection_2026_team_summary_by_country",
+        "ml_projection_2026_country_summary_by_country"
+      ],
+      "properties": {
+        "kpis_by_country": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "country",
+              "total_teams",
+              "total_players",
+              "total_prizes",
+              "average_age",
+              "active_competitions",
+              "international_competitions",
+              "national_competitions",
+              "countries_represented"
+            ],
+            "properties": {
+              "country": {
+                "type": "string"
+              },
+              "total_teams": {
+                "type": "integer"
+              },
+              "total_players": {
+                "type": "integer"
+              },
+              "total_prizes": {
+                "type": "number"
+              },
+              "average_age": {
+                "type": "number"
+              },
+              "active_competitions": {
+                "type": "integer"
+              },
+              "international_competitions": {
+                "type": "integer"
+              },
+              "national_competitions": {
+                "type": "integer"
+              },
+              "countries_represented": {
+                "type": "integer"
+              }
+            }
+          }
+        },
+        "kpis_by_competition": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "competition_name",
+              "type",
+              "year",
+              "total_teams",
+              "total_players",
+              "total_prizes",
+              "average_age",
+              "countries_represented",
+              "international_competitions",
+              "national_competitions"
+            ],
+            "properties": {
+              "competition_name": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "year": {
+                "type": "integer"
+              },
+              "total_teams": {
+                "type": "integer"
+              },
+              "total_players": {
+                "type": "integer"
+              },
+              "total_prizes": {
+                "type": "number"
+              },
+              "average_age": {
+                "type": "number"
+              },
+              "countries_represented": {
+                "type": "integer"
+              },
+              "international_competitions": {
+                "type": "integer"
+              },
+              "national_competitions": {
+                "type": "integer"
+              }
+            }
+          }
+        },
+        "kpis_by_country_competition": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "competition_name",
+              "country",
+              "type",
+              "year",
+              "total_teams",
+              "total_players",
+              "total_prizes",
+              "average_age"
+            ],
+            "properties": {
+              "competition_name": {
+                "type": "string"
+              },
+              "country": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "year": {
+                "type": "integer"
+              },
+              "total_teams": {
+                "type": "integer"
+              },
+              "total_players": {
+                "type": "integer"
+              },
+              "total_prizes": {
+                "type": "number"
+              },
+              "average_age": {
+                "type": "number"
+              }
+            }
+          }
+        },
+        "country_ranking_by_competition": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "competition_name",
+              "country",
+              "total_teams",
+              "total_players",
+              "total_prizes",
+              "average_prize_per_team",
+              "average_age"
+            ],
+            "properties": {
+              "competition_name": {
+                "type": "string"
+              },
+              "country": {
+                "type": "string"
+              },
+              "total_teams": {
+                "type": "integer"
+              },
+              "total_players": {
+                "type": "integer"
+              },
+              "total_prizes": {
+                "type": "number"
+              },
+              "average_prize_per_team": {
+                "type": "number"
+              },
+              "average_age": {
+                "type": "number"
+              }
+            }
+          }
+        },
+        "top_teams_by_competition": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "competition_name",
+              "team",
+              "country",
+              "final_position",
+              "prize_obtained",
+              "total_players"
+            ],
+            "properties": {
+              "competition_name": {
+                "type": "string"
+              },
+              "team": {
+                "type": "string"
+              },
+              "country": {
+                "type": "string"
+              },
+              "final_position": {
+                "type": "number"
+              },
+              "prize_obtained": {
+                "type": "number"
+              },
+              "total_players": {
+                "type": "integer"
+              }
+            }
+          }
+        },
+        "top_players_by_competition": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "competition_name",
+              "name",
+              "nationality",
+              "performance_2024",
+              "performance_2025",
+              "trend"
+            ],
+            "properties": {
+              "competition_name": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "nationality": {
+                "type": "string"
+              },
+              "performance_2024": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "performance_2025": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "trend": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "player_evolution_by_competition": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "competition_name",
+              "competition_year",
+              "name",
+              "nationality",
+              "team",
+              "performance_2024",
+              "performance_2025",
+              "trend",
+              "improvement",
+              "improvement_pct"
+            ],
+            "properties": {
+              "competition_name": {
+                "type": "string"
+              },
+              "competition_year": {
+                "type": "integer"
+              },
+              "name": {
+                "type": "string"
+              },
+              "nationality": {
+                "type": "string"
+              },
+              "team": {
+                "type": "string"
+              },
+              "performance_2024": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "performance_2025": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "trend": {
+                "type": "string"
+              },
+              "improvement": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "improvement_pct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "decline": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              }
+            }
+          }
+        },
+        "role_analysis_by_competition": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "competition_name",
+              "role",
+              "total_participations",
+              "unique_players",
+              "average_performance"
+            ],
+            "properties": {
+              "competition_name": {
+                "type": "string"
+              },
+              "role": {
+                "type": "string"
+              },
+              "total_participations": {
+                "type": "integer"
+              },
+              "unique_players": {
+                "type": "integer"
+              },
+              "average_performance": {
+                "type": "number"
+              }
+            }
+          }
+        },
+        "player_age_performance_summary_by_country": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "country",
+              "players_count",
+              "overall_average_performance_pct",
+              "correlation_value",
+              "correlation_strength",
+              "correlation_direction",
+              "best_age_band",
+              "best_age_band_average_performance_pct"
+            ],
+            "properties": {
+              "country": {
+                "type": "string"
+              },
+              "players_count": {
+                "type": "integer"
+              },
+              "overall_average_performance_pct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "correlation_value": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "correlation_strength": {
+                "type": "string",
+                "enum": [
+                  "none",
+                  "weak",
+                  "moderate",
+                  "strong",
+                  "insufficient"
+                ]
+              },
+              "correlation_direction": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "enum": [
+                  "positive",
+                  "negative",
+                  "neutral",
+                  null
+                ]
+              },
+              "best_age_band": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "enum": [
+                  "20-21",
+                  "22-23",
+                  "24+",
+                  null
+                ]
+              },
+              "best_age_band_average_performance_pct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              }
+            }
+          }
+        },
+        "player_age_performance_summary_by_competition": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "competition_name",
+              "players_count",
+              "overall_average_performance_pct",
+              "correlation_value",
+              "correlation_strength",
+              "correlation_direction",
+              "best_age_band",
+              "best_age_band_average_performance_pct"
+            ],
+            "properties": {
+              "competition_name": {
+                "type": "string"
+              },
+              "players_count": {
+                "type": "integer"
+              },
+              "overall_average_performance_pct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "correlation_value": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "correlation_strength": {
+                "type": "string",
+                "enum": [
+                  "none",
+                  "weak",
+                  "moderate",
+                  "strong",
+                  "insufficient"
+                ]
+              },
+              "correlation_direction": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "enum": [
+                  "positive",
+                  "negative",
+                  "neutral",
+                  null
+                ]
+              },
+              "best_age_band": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "enum": [
+                  "20-21",
+                  "22-23",
+                  "24+",
+                  null
+                ]
+              },
+              "best_age_band_average_performance_pct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              }
+            }
+          }
+        },
+        "player_age_performance_summary_by_country_competition": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "competition_name",
+              "country",
+              "players_count",
+              "overall_average_performance_pct",
+              "correlation_value",
+              "correlation_strength",
+              "correlation_direction",
+              "best_age_band",
+              "best_age_band_average_performance_pct"
+            ],
+            "properties": {
+              "competition_name": {
+                "type": "string"
+              },
+              "country": {
+                "type": "string"
+              },
+              "players_count": {
+                "type": "integer"
+              },
+              "overall_average_performance_pct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "correlation_value": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "correlation_strength": {
+                "type": "string",
+                "enum": [
+                  "none",
+                  "weak",
+                  "moderate",
+                  "strong",
+                  "insufficient"
+                ]
+              },
+              "correlation_direction": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "enum": [
+                  "positive",
+                  "negative",
+                  "neutral",
+                  null
+                ]
+              },
+              "best_age_band": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "enum": [
+                  "20-21",
+                  "22-23",
+                  "24+",
+                  null
+                ]
+              },
+              "best_age_band_average_performance_pct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              }
+            }
+          }
+        },
+        "player_age_performance_bands_by_country": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "country",
+              "age_band",
+              "players_count",
+              "average_performance_pct",
+              "top_player_name",
+              "top_player_team",
+              "top_player_performance_pct"
+            ],
+            "properties": {
+              "country": {
+                "type": "string"
+              },
+              "age_band": {
+                "type": "string",
+                "enum": [
+                  "20-21",
+                  "22-23",
+                  "24+"
+                ]
+              },
+              "players_count": {
+                "type": "integer"
+              },
+              "average_performance_pct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "top_player_name": {
+                "type": "string"
+              },
+              "top_player_team": {
+                "type": "string"
+              },
+              "top_player_performance_pct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              }
+            }
+          }
+        },
+        "player_age_performance_bands_by_competition": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "competition_name",
+              "age_band",
+              "players_count",
+              "average_performance_pct",
+              "top_player_name",
+              "top_player_team",
+              "top_player_performance_pct"
+            ],
+            "properties": {
+              "competition_name": {
+                "type": "string"
+              },
+              "age_band": {
+                "type": "string",
+                "enum": [
+                  "20-21",
+                  "22-23",
+                  "24+"
+                ]
+              },
+              "players_count": {
+                "type": "integer"
+              },
+              "average_performance_pct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "top_player_name": {
+                "type": "string"
+              },
+              "top_player_team": {
+                "type": "string"
+              },
+              "top_player_performance_pct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              }
+            }
+          }
+        },
+        "player_age_performance_bands_by_country_competition": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "competition_name",
+              "country",
+              "age_band",
+              "players_count",
+              "average_performance_pct",
+              "top_player_name",
+              "top_player_team",
+              "top_player_performance_pct"
+            ],
+            "properties": {
+              "competition_name": {
+                "type": "string"
+              },
+              "country": {
+                "type": "string"
+              },
+              "age_band": {
+                "type": "string",
+                "enum": [
+                  "20-21",
+                  "22-23",
+                  "24+"
+                ]
+              },
+              "players_count": {
+                "type": "integer"
+              },
+              "average_performance_pct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "top_player_name": {
+                "type": "string"
+              },
+              "top_player_team": {
+                "type": "string"
+              },
+              "top_player_performance_pct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              }
+            }
+          }
+        },
+        "player_age_performance_points_by_country": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "country",
+              "player_name",
+              "team",
+              "team_country",
+              "player_nationality",
+              "age",
+              "performance_pct",
+              "age_band",
+              "competitions_count"
+            ],
+            "properties": {
+              "country": {
+                "type": "string"
+              },
+              "player_name": {
+                "type": "string"
+              },
+              "team": {
+                "type": "string"
+              },
+              "team_country": {
+                "type": "string"
+              },
+              "player_nationality": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "age": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "performance_pct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "age_band": {
+                "type": "string",
+                "enum": [
+                  "20-21",
+                  "22-23",
+                  "24+"
+                ]
+              },
+              "competitions_count": {
+                "type": "integer"
+              }
+            }
+          }
+        },
+        "player_age_performance_points_by_competition": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "competition_name",
+              "player_name",
+              "team",
+              "team_country",
+              "player_nationality",
+              "age",
+              "performance_pct",
+              "age_band",
+              "competitions_count"
+            ],
+            "properties": {
+              "competition_name": {
+                "type": "string"
+              },
+              "player_name": {
+                "type": "string"
+              },
+              "team": {
+                "type": "string"
+              },
+              "team_country": {
+                "type": "string"
+              },
+              "player_nationality": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "age": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "performance_pct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "age_band": {
+                "type": "string",
+                "enum": [
+                  "20-21",
+                  "22-23",
+                  "24+"
+                ]
+              },
+              "competitions_count": {
+                "type": "integer"
+              }
+            }
+          }
+        },
+        "player_age_performance_points_by_country_competition": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "competition_name",
+              "country",
+              "player_name",
+              "team",
+              "team_country",
+              "player_nationality",
+              "age",
+              "performance_pct",
+              "age_band",
+              "competitions_count"
+            ],
+            "properties": {
+              "competition_name": {
+                "type": "string"
+              },
+              "country": {
+                "type": "string"
+              },
+              "player_name": {
+                "type": "string"
+              },
+              "team": {
+                "type": "string"
+              },
+              "team_country": {
+                "type": "string"
+              },
+              "player_nationality": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "age": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "performance_pct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "age_band": {
+                "type": "string",
+                "enum": [
+                  "20-21",
+                  "22-23",
+                  "24+"
+                ]
+              },
+              "competitions_count": {
+                "type": "integer"
+              }
+            }
+          }
+        },
+        "player_age_performance_leaders_by_country": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "country",
+              "young_standout_player",
+              "young_standout_team",
+              "young_standout_performance_pct",
+              "veteran_standout_player",
+              "veteran_standout_team",
+              "veteran_standout_performance_pct"
+            ],
+            "properties": {
+              "country": {
+                "type": "string"
+              },
+              "young_standout_player": {
+                "type": "string"
+              },
+              "young_standout_team": {
+                "type": "string"
+              },
+              "young_standout_performance_pct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "veteran_standout_player": {
+                "type": "string"
+              },
+              "veteran_standout_team": {
+                "type": "string"
+              },
+              "veteran_standout_performance_pct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              }
+            }
+          }
+        },
+        "player_age_performance_leaders_by_competition": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "competition_name",
+              "young_standout_player",
+              "young_standout_team",
+              "young_standout_performance_pct",
+              "veteran_standout_player",
+              "veteran_standout_team",
+              "veteran_standout_performance_pct"
+            ],
+            "properties": {
+              "competition_name": {
+                "type": "string"
+              },
+              "young_standout_player": {
+                "type": "string"
+              },
+              "young_standout_team": {
+                "type": "string"
+              },
+              "young_standout_performance_pct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "veteran_standout_player": {
+                "type": "string"
+              },
+              "veteran_standout_team": {
+                "type": "string"
+              },
+              "veteran_standout_performance_pct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              }
+            }
+          }
+        },
+        "player_age_performance_leaders_by_country_competition": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "competition_name",
+              "country",
+              "young_standout_player",
+              "young_standout_team",
+              "young_standout_performance_pct",
+              "veteran_standout_player",
+              "veteran_standout_team",
+              "veteran_standout_performance_pct"
+            ],
+            "properties": {
+              "competition_name": {
+                "type": "string"
+              },
+              "country": {
+                "type": "string"
+              },
+              "young_standout_player": {
+                "type": "string"
+              },
+              "young_standout_team": {
+                "type": "string"
+              },
+              "young_standout_performance_pct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "veteran_standout_player": {
+                "type": "string"
+              },
+              "veteran_standout_team": {
+                "type": "string"
+              },
+              "veteran_standout_performance_pct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              }
+            }
+          }
+        },
+        "radar_teamwork_by_competition": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "competition_name",
+              "team",
+              "country",
+              "avg_teamwork",
+              "total_players",
+              "avg_winrate",
+              "total_prizes"
+            ],
+            "properties": {
+              "competition_name": {
+                "type": "string"
+              },
+              "team": {
+                "type": "string"
+              },
+              "country": {
+                "type": "string"
+              },
+              "avg_teamwork": {
+                "type": "number"
+              },
+              "total_players": {
+                "type": "integer"
+              },
+              "avg_winrate": {
+                "type": "number"
+              },
+              "total_prizes": {
+                "type": "number"
+              }
+            }
+          }
+        },
+        "scatter_age_performance_by_competition": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "competition_name",
+              "name",
+              "age",
+              "performance",
+              "nationality",
+              "team"
+            ],
+            "properties": {
+              "competition_name": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "age": {
+                "type": "integer"
+              },
+              "performance": {
+                "type": "number"
+              },
+              "nationality": {
+                "type": "string"
+              },
+              "team": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "veteran_players_by_competition": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "competition_name",
+              "team",
+              "country",
+              "veteran_player",
+              "age",
+              "performance_2024"
+            ],
+            "properties": {
+              "competition_name": {
+                "type": "string"
+              },
+              "team": {
+                "type": "string"
+              },
+              "country": {
+                "type": "string"
+              },
+              "veteran_player": {
+                "type": "string"
+              },
+              "age": {
+                "type": "integer"
+              },
+              "performance_2024": {
+                "type": "number"
+              }
+            }
+          }
+        },
+        "players_index": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "name",
+              "nationality",
+              "team",
+              "search_key"
+            ],
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "nationality": {
+                "type": "string"
+              },
+              "team": {
+                "type": "string"
+              },
+              "search_key": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "squad_usage_by_country": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "country",
+              "starter_participations",
+              "substitute_participations",
+              "starter_share_pct",
+              "substitute_share_pct",
+              "starter_unique_players",
+              "substitute_unique_players",
+              "starter_avg_performance",
+              "substitute_avg_performance",
+              "performance_gap_pct",
+              "teams_with_substitutes",
+              "teams_without_substitutes"
+            ],
+            "properties": {
+              "country": {
+                "type": "string"
+              },
+              "starter_participations": {
+                "type": "integer"
+              },
+              "substitute_participations": {
+                "type": "integer"
+              },
+              "starter_share_pct": {
+                "type": "number"
+              },
+              "substitute_share_pct": {
+                "type": "number"
+              },
+              "starter_unique_players": {
+                "type": "integer"
+              },
+              "substitute_unique_players": {
+                "type": "integer"
+              },
+              "starter_avg_performance": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "substitute_avg_performance": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "performance_gap_pct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "teams_with_substitutes": {
+                "type": "integer"
+              },
+              "teams_without_substitutes": {
+                "type": "integer"
+              }
+            }
+          }
+        },
+        "squad_usage_by_competition": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "competition_name",
+              "starter_participations",
+              "substitute_participations",
+              "starter_share_pct",
+              "substitute_share_pct",
+              "starter_unique_players",
+              "substitute_unique_players",
+              "starter_avg_performance",
+              "substitute_avg_performance",
+              "performance_gap_pct",
+              "teams_with_substitutes",
+              "teams_without_substitutes"
+            ],
+            "properties": {
+              "competition_name": {
+                "type": "string"
+              },
+              "starter_participations": {
+                "type": "integer"
+              },
+              "substitute_participations": {
+                "type": "integer"
+              },
+              "starter_share_pct": {
+                "type": "number"
+              },
+              "substitute_share_pct": {
+                "type": "number"
+              },
+              "starter_unique_players": {
+                "type": "integer"
+              },
+              "substitute_unique_players": {
+                "type": "integer"
+              },
+              "starter_avg_performance": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "substitute_avg_performance": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "performance_gap_pct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "teams_with_substitutes": {
+                "type": "integer"
+              },
+              "teams_without_substitutes": {
+                "type": "integer"
+              }
+            }
+          }
+        },
+        "squad_usage_by_country_competition": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "competition_name",
+              "country",
+              "starter_participations",
+              "substitute_participations",
+              "starter_share_pct",
+              "substitute_share_pct",
+              "starter_unique_players",
+              "substitute_unique_players",
+              "starter_avg_performance",
+              "substitute_avg_performance",
+              "performance_gap_pct",
+              "teams_with_substitutes",
+              "teams_without_substitutes"
+            ],
+            "properties": {
+              "competition_name": {
+                "type": "string"
+              },
+              "country": {
+                "type": "string"
+              },
+              "starter_participations": {
+                "type": "integer"
+              },
+              "substitute_participations": {
+                "type": "integer"
+              },
+              "starter_share_pct": {
+                "type": "number"
+              },
+              "substitute_share_pct": {
+                "type": "number"
+              },
+              "starter_unique_players": {
+                "type": "integer"
+              },
+              "substitute_unique_players": {
+                "type": "integer"
+              },
+              "starter_avg_performance": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "substitute_avg_performance": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "performance_gap_pct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "teams_with_substitutes": {
+                "type": "integer"
+              },
+              "teams_without_substitutes": {
+                "type": "integer"
+              }
+            }
+          }
+        },
+        "squad_usage_team_breakdown_by_country": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "team",
+              "country",
+              "starter_participations",
+              "substitute_participations",
+              "starter_unique_players",
+              "substitute_unique_players",
+              "starter_avg_performance",
+              "substitute_avg_performance",
+              "substitute_share_pct",
+              "performance_gap_pct"
+            ],
+            "properties": {
+              "team": {
+                "type": "string"
+              },
+              "country": {
+                "type": "string"
+              },
+              "starter_participations": {
+                "type": "integer"
+              },
+              "substitute_participations": {
+                "type": "integer"
+              },
+              "starter_unique_players": {
+                "type": "integer"
+              },
+              "substitute_unique_players": {
+                "type": "integer"
+              },
+              "starter_avg_performance": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "substitute_avg_performance": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "substitute_share_pct": {
+                "type": "number"
+              },
+              "performance_gap_pct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              }
+            }
+          }
+        },
+        "squad_usage_team_breakdown_by_competition": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "competition_name",
+              "team",
+              "country",
+              "starter_participations",
+              "substitute_participations",
+              "starter_unique_players",
+              "substitute_unique_players",
+              "starter_avg_performance",
+              "substitute_avg_performance",
+              "substitute_share_pct",
+              "performance_gap_pct"
+            ],
+            "properties": {
+              "competition_name": {
+                "type": "string"
+              },
+              "team": {
+                "type": "string"
+              },
+              "country": {
+                "type": "string"
+              },
+              "starter_participations": {
+                "type": "integer"
+              },
+              "substitute_participations": {
+                "type": "integer"
+              },
+              "starter_unique_players": {
+                "type": "integer"
+              },
+              "substitute_unique_players": {
+                "type": "integer"
+              },
+              "starter_avg_performance": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "substitute_avg_performance": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "substitute_share_pct": {
+                "type": "number"
+              },
+              "performance_gap_pct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              }
+            }
+          }
+        },
+        "squad_usage_team_breakdown_by_country_competition": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "competition_name",
+              "team",
+              "country",
+              "starter_participations",
+              "substitute_participations",
+              "starter_unique_players",
+              "substitute_unique_players",
+              "starter_avg_performance",
+              "substitute_avg_performance",
+              "substitute_share_pct",
+              "performance_gap_pct"
+            ],
+            "properties": {
+              "competition_name": {
+                "type": "string"
+              },
+              "team": {
+                "type": "string"
+              },
+              "country": {
+                "type": "string"
+              },
+              "starter_participations": {
+                "type": "integer"
+              },
+              "substitute_participations": {
+                "type": "integer"
+              },
+              "starter_unique_players": {
+                "type": "integer"
+              },
+              "substitute_unique_players": {
+                "type": "integer"
+              },
+              "starter_avg_performance": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "substitute_avg_performance": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "substitute_share_pct": {
+                "type": "number"
+              },
+              "performance_gap_pct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              }
+            }
+          }
+        },
+        "team_comparison_profiles_by_country": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "team": {
+                "type": "string"
+              },
+              "country": {
+                "type": "string"
+              },
+              "competitions_count": {
+                "type": "integer"
+              },
+              "teamwork_score": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "victory_rate_pct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "position_metric": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "results_score": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "prize_amount": {
+                "type": "number"
+              },
+              "prize_share_pct": {
+                "type": "number"
+              },
+              "titles_count": {
+                "type": "integer"
+              },
+              "podium_count": {
+                "type": "integer"
+              },
+              "comparison_score": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "team",
+              "country",
+              "competitions_count",
+              "teamwork_score",
+              "victory_rate_pct",
+              "position_metric",
+              "results_score",
+              "prize_amount",
+              "prize_share_pct",
+              "titles_count",
+              "podium_count",
+              "comparison_score"
+            ]
+          },
+          "description": "Country-scoped team comparison profiles for Comparativa de equipos."
+        },
+        "team_comparison_profiles_by_competition": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "team": {
+                "type": "string"
+              },
+              "country": {
+                "type": "string"
+              },
+              "competitions_count": {
+                "type": "integer"
+              },
+              "teamwork_score": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "victory_rate_pct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "position_metric": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "results_score": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "prize_amount": {
+                "type": "number"
+              },
+              "prize_share_pct": {
+                "type": "number"
+              },
+              "titles_count": {
+                "type": "integer"
+              },
+              "podium_count": {
+                "type": "integer"
+              },
+              "comparison_score": {
+                "type": "number"
+              },
+              "competition_name": {
+                "type": "string"
+              },
+              "competition_result": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "competition_name",
+              "team",
+              "country",
+              "competitions_count",
+              "teamwork_score",
+              "victory_rate_pct",
+              "position_metric",
+              "results_score",
+              "prize_amount",
+              "prize_share_pct",
+              "titles_count",
+              "podium_count",
+              "comparison_score",
+              "competition_result"
+            ]
+          },
+          "description": "Competition-scoped team comparison profiles for Comparativa de equipos."
+        },
+        "team_comparison_profiles_by_country_competition": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "team": {
+                "type": "string"
+              },
+              "country": {
+                "type": "string"
+              },
+              "competitions_count": {
+                "type": "integer"
+              },
+              "teamwork_score": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "victory_rate_pct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "position_metric": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "results_score": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "prize_amount": {
+                "type": "number"
+              },
+              "prize_share_pct": {
+                "type": "number"
+              },
+              "titles_count": {
+                "type": "integer"
+              },
+              "podium_count": {
+                "type": "integer"
+              },
+              "comparison_score": {
+                "type": "number"
+              },
+              "competition_name": {
+                "type": "string"
+              },
+              "competition_result": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "competition_name",
+              "team",
+              "country",
+              "competitions_count",
+              "teamwork_score",
+              "victory_rate_pct",
+              "position_metric",
+              "results_score",
+              "prize_amount",
+              "prize_share_pct",
+              "titles_count",
+              "podium_count",
+              "comparison_score",
+              "competition_result"
+            ]
+          },
+          "description": "Country + competition-scoped team comparison profiles for Comparativa de equipos."
+        },
+        "team_comparison_leaders_by_country": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "best_teamwork_team": {
+                "type": "string"
+              },
+              "best_teamwork_score": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "best_victory_team": {
+                "type": "string"
+              },
+              "best_victory_rate_pct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "best_results_team": {
+                "type": "string"
+              },
+              "best_results_score": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "best_prize_team": {
+                "type": "string"
+              },
+              "best_prize_share_pct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "country": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "country",
+              "best_teamwork_team",
+              "best_teamwork_score",
+              "best_victory_team",
+              "best_victory_rate_pct",
+              "best_results_team",
+              "best_results_score",
+              "best_prize_team",
+              "best_prize_share_pct"
+            ]
+          },
+          "description": "Country-scoped leaders for the four highlight cards of Comparativa de equipos."
+        },
+        "team_comparison_leaders_by_competition": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "best_teamwork_team": {
+                "type": "string"
+              },
+              "best_teamwork_score": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "best_victory_team": {
+                "type": "string"
+              },
+              "best_victory_rate_pct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "best_results_team": {
+                "type": "string"
+              },
+              "best_results_score": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "best_prize_team": {
+                "type": "string"
+              },
+              "best_prize_share_pct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "competition_name": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "competition_name",
+              "best_teamwork_team",
+              "best_teamwork_score",
+              "best_victory_team",
+              "best_victory_rate_pct",
+              "best_results_team",
+              "best_results_score",
+              "best_prize_team",
+              "best_prize_share_pct"
+            ]
+          },
+          "description": "Competition-scoped leaders for the four highlight cards of Comparativa de equipos."
+        },
+        "team_comparison_leaders_by_country_competition": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "best_teamwork_team": {
+                "type": "string"
+              },
+              "best_teamwork_score": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "best_victory_team": {
+                "type": "string"
+              },
+              "best_victory_rate_pct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "best_results_team": {
+                "type": "string"
+              },
+              "best_results_score": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "best_prize_team": {
+                "type": "string"
+              },
+              "best_prize_share_pct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "competition_name": {
+                "type": "string"
+              },
+              "country": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "competition_name",
+              "country",
+              "best_teamwork_team",
+              "best_teamwork_score",
+              "best_victory_team",
+              "best_victory_rate_pct",
+              "best_results_team",
+              "best_results_score",
+              "best_prize_team",
+              "best_prize_share_pct"
+            ]
+          },
+          "description": "Country + competition-scoped leaders for the four highlight cards of Comparativa de equipos."
+        },
+        "team_experience_summary_by_country": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "country": {
+                "type": "string"
+              },
+              "teams_count": {
+                "type": "integer"
+              },
+              "veteran_starters_count": {
+                "type": "integer"
+              },
+              "veteran_substitutes_count": {
+                "type": "integer"
+              },
+              "veteran_mixed_count": {
+                "type": "integer"
+              },
+              "avg_team_age": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "avg_veteran_age": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "avg_age_span": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "country",
+              "teams_count",
+              "veteran_starters_count",
+              "veteran_substitutes_count",
+              "veteran_mixed_count",
+              "avg_team_age",
+              "avg_veteran_age",
+              "avg_age_span"
+            ]
+          }
+        },
+        "team_experience_summary_by_competition": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "competition_name": {
+                "type": "string"
+              },
+              "teams_count": {
+                "type": "integer"
+              },
+              "veteran_starters_count": {
+                "type": "integer"
+              },
+              "veteran_substitutes_count": {
+                "type": "integer"
+              },
+              "veteran_mixed_count": {
+                "type": "integer"
+              },
+              "avg_team_age": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "avg_veteran_age": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "avg_age_span": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "competition_name",
+              "teams_count",
+              "veteran_starters_count",
+              "veteran_substitutes_count",
+              "veteran_mixed_count",
+              "avg_team_age",
+              "avg_veteran_age",
+              "avg_age_span"
+            ]
+          }
+        },
+        "team_experience_summary_by_country_competition": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "competition_name": {
+                "type": "string"
+              },
+              "country": {
+                "type": "string"
+              },
+              "teams_count": {
+                "type": "integer"
+              },
+              "veteran_starters_count": {
+                "type": "integer"
+              },
+              "veteran_substitutes_count": {
+                "type": "integer"
+              },
+              "veteran_mixed_count": {
+                "type": "integer"
+              },
+              "avg_team_age": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "avg_veteran_age": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "avg_age_span": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "competition_name",
+              "country",
+              "teams_count",
+              "veteran_starters_count",
+              "veteran_substitutes_count",
+              "veteran_mixed_count",
+              "avg_team_age",
+              "avg_veteran_age",
+              "avg_age_span"
+            ]
+          }
+        },
+        "team_experience_profiles_by_country": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "team": {
+                "type": "string"
+              },
+              "country": {
+                "type": "string"
+              },
+              "veteran_player": {
+                "type": "string"
+              },
+              "veteran_age": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "veteran_role": {
+                "type": "string"
+              },
+              "veteran_performance_pct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "team_avg_age": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "youngest_age": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "oldest_age": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "age_span": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "team_avg_performance_pct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "veteran_vs_team_gap_pct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "competitions_count": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "team",
+              "country",
+              "veteran_player",
+              "veteran_age",
+              "veteran_role",
+              "veteran_performance_pct",
+              "team_avg_age",
+              "youngest_age",
+              "oldest_age",
+              "age_span",
+              "team_avg_performance_pct",
+              "veteran_vs_team_gap_pct",
+              "competitions_count"
+            ]
+          },
+          "description": "Source of truth for Experiencia del equipo. Frontend uses these rows for compareMode, profileMode and the range map."
+        },
+        "team_experience_profiles_by_competition": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "competition_name": {
+                "type": "string"
+              },
+              "team": {
+                "type": "string"
+              },
+              "country": {
+                "type": "string"
+              },
+              "veteran_player": {
+                "type": "string"
+              },
+              "veteran_age": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "veteran_role": {
+                "type": "string"
+              },
+              "veteran_performance_pct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "team_avg_age": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "youngest_age": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "oldest_age": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "age_span": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "team_avg_performance_pct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "veteran_vs_team_gap_pct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "competitions_count": {
+                "type": "integer"
+              },
+              "competition_result": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "competition_name",
+              "team",
+              "country",
+              "veteran_player",
+              "veteran_age",
+              "veteran_role",
+              "veteran_performance_pct",
+              "team_avg_age",
+              "youngest_age",
+              "oldest_age",
+              "age_span",
+              "team_avg_performance_pct",
+              "veteran_vs_team_gap_pct",
+              "competitions_count",
+              "competition_result"
+            ]
+          },
+          "description": "Source of truth for Experiencia del equipo. Frontend uses these rows for compareMode, profileMode and the range map."
+        },
+        "team_experience_profiles_by_country_competition": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "competition_name": {
+                "type": "string"
+              },
+              "team": {
+                "type": "string"
+              },
+              "country": {
+                "type": "string"
+              },
+              "veteran_player": {
+                "type": "string"
+              },
+              "veteran_age": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "veteran_role": {
+                "type": "string"
+              },
+              "veteran_performance_pct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "team_avg_age": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "youngest_age": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "oldest_age": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "age_span": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "team_avg_performance_pct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "veteran_vs_team_gap_pct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "competitions_count": {
+                "type": "integer"
+              },
+              "competition_result": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "competition_name",
+              "team",
+              "country",
+              "veteran_player",
+              "veteran_age",
+              "veteran_role",
+              "veteran_performance_pct",
+              "team_avg_age",
+              "youngest_age",
+              "oldest_age",
+              "age_span",
+              "team_avg_performance_pct",
+              "veteran_vs_team_gap_pct",
+              "competitions_count",
+              "competition_result"
+            ]
+          },
+          "description": "Source of truth for Experiencia del equipo. Frontend uses these rows for compareMode, profileMode and the range map."
+        },
+        "team_experience_leaders_by_country": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "country": {
+                "type": "string"
+              },
+              "most_experienced_team": {
+                "type": "string"
+              },
+              "most_experienced_team_avg_age": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "best_veteran_player": {
+                "type": "string"
+              },
+              "best_veteran_team": {
+                "type": "string"
+              },
+              "best_veteran_performance_pct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "widest_age_gap_team": {
+                "type": "string"
+              },
+              "widest_age_gap_years": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "highest_veteran_advantage_team": {
+                "type": "string"
+              },
+              "highest_veteran_advantage_pct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "country",
+              "most_experienced_team",
+              "most_experienced_team_avg_age",
+              "best_veteran_player",
+              "best_veteran_team",
+              "best_veteran_performance_pct",
+              "widest_age_gap_team",
+              "widest_age_gap_years",
+              "highest_veteran_advantage_team",
+              "highest_veteran_advantage_pct"
+            ]
+          }
+        },
+        "team_experience_leaders_by_competition": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "competition_name": {
+                "type": "string"
+              },
+              "most_experienced_team": {
+                "type": "string"
+              },
+              "most_experienced_team_avg_age": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "best_veteran_player": {
+                "type": "string"
+              },
+              "best_veteran_team": {
+                "type": "string"
+              },
+              "best_veteran_performance_pct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "widest_age_gap_team": {
+                "type": "string"
+              },
+              "widest_age_gap_years": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "highest_veteran_advantage_team": {
+                "type": "string"
+              },
+              "highest_veteran_advantage_pct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "competition_name",
+              "most_experienced_team",
+              "most_experienced_team_avg_age",
+              "best_veteran_player",
+              "best_veteran_team",
+              "best_veteran_performance_pct",
+              "widest_age_gap_team",
+              "widest_age_gap_years",
+              "highest_veteran_advantage_team",
+              "highest_veteran_advantage_pct"
+            ]
+          }
+        },
+        "team_experience_leaders_by_country_competition": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "competition_name": {
+                "type": "string"
+              },
+              "country": {
+                "type": "string"
+              },
+              "most_experienced_team": {
+                "type": "string"
+              },
+              "most_experienced_team_avg_age": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "best_veteran_player": {
+                "type": "string"
+              },
+              "best_veteran_team": {
+                "type": "string"
+              },
+              "best_veteran_performance_pct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "widest_age_gap_team": {
+                "type": "string"
+              },
+              "widest_age_gap_years": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "highest_veteran_advantage_team": {
+                "type": "string"
+              },
+              "highest_veteran_advantage_pct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "competition_name",
+              "country",
+              "most_experienced_team",
+              "most_experienced_team_avg_age",
+              "best_veteran_player",
+              "best_veteran_team",
+              "best_veteran_performance_pct",
+              "widest_age_gap_team",
+              "widest_age_gap_years",
+              "highest_veteran_advantage_team",
+              "highest_veteran_advantage_pct"
+            ]
+          }
+        },
+        "ml_projection_2026_summary_by_country": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "country",
+              "players_count",
+              "improved_players_count",
+              "declined_players_count",
+              "stable_players_count",
+              "best_projected_player",
+              "best_projected_winrate",
+              "biggest_improvement_player",
+              "biggest_improvement_delta",
+              "biggest_decline_player",
+              "biggest_decline_delta",
+              "best_projected_team",
+              "best_projected_team_avg_winrate"
+            ],
+            "properties": {
+              "country": {
+                "type": "string"
+              },
+              "players_count": {
+                "type": "integer"
+              },
+              "improved_players_count": {
+                "type": "integer"
+              },
+              "declined_players_count": {
+                "type": "integer"
+              },
+              "stable_players_count": {
+                "type": "integer"
+              },
+              "best_projected_player": {
+                "type": "string"
+              },
+              "best_projected_winrate": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "biggest_improvement_player": {
+                "type": "string"
+              },
+              "biggest_improvement_delta": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "biggest_decline_player": {
+                "type": "string"
+              },
+              "biggest_decline_delta": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "best_projected_team": {
+                "type": "string"
+              },
+              "best_projected_team_avg_winrate": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              }
+            }
+          }
+        },
+        "ml_projection_2026_players_by_country": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "country",
+              "player_name",
+              "team",
+              "team_country",
+              "player_nationality",
+              "age_2026",
+              "actual_winrate",
+              "predicted_winrate",
+              "delta",
+              "trend",
+              "confidence_score",
+              "confidence_band",
+              "risk_band",
+              "projected_rank"
+            ],
+            "properties": {
+              "country": {
+                "type": "string"
+              },
+              "player_name": {
+                "type": "string"
+              },
+              "team": {
+                "type": "string"
+              },
+              "team_country": {
+                "type": "string"
+              },
+              "player_nationality": {
+                "type": "string"
+              },
+              "age_2026": {
+                "type": "integer"
+              },
+              "actual_winrate": {
+                "type": "number"
+              },
+              "predicted_winrate": {
+                "type": "number"
+              },
+              "delta": {
+                "type": "number"
+              },
+              "trend": {
+                "type": "string"
+              },
+              "confidence_score": {
+                "type": "number"
+              },
+              "confidence_band": {
+                "type": "string"
+              },
+              "risk_band": {
+                "type": "string"
+              },
+              "projected_rank": {
+                "type": "integer"
+              }
+            }
+          }
+        },
+        "ml_projection_2026_team_summary_by_country": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "team",
+              "country",
+              "players_count",
+              "actual_avg_winrate",
+              "projected_avg_winrate",
+              "avg_delta",
+              "improved_players_count",
+              "declined_players_count",
+              "top_projected_player",
+              "top_projected_winrate"
+            ],
+            "properties": {
+              "team": {
+                "type": "string"
+              },
+              "country": {
+                "type": "string"
+              },
+              "players_count": {
+                "type": "integer"
+              },
+              "actual_avg_winrate": {
+                "type": "number"
+              },
+              "projected_avg_winrate": {
+                "type": "number"
+              },
+              "avg_delta": {
+                "type": "number"
+              },
+              "improved_players_count": {
+                "type": "integer"
+              },
+              "declined_players_count": {
+                "type": "integer"
+              },
+              "top_projected_player": {
+                "type": "string"
+              },
+              "top_projected_winrate": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              }
+            }
+          }
+        },
+        "ml_projection_2026_country_summary_by_country": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "country",
+              "players_count",
+              "actual_avg_winrate",
+              "projected_avg_winrate",
+              "avg_delta",
+              "improved_players_count",
+              "declined_players_count",
+              "top_projected_player",
+              "top_projected_winrate"
+            ],
+            "properties": {
+              "country": {
+                "type": "string"
+              },
+              "players_count": {
+                "type": "integer"
+              },
+              "actual_avg_winrate": {
+                "type": "number"
+              },
+              "projected_avg_winrate": {
+                "type": "number"
+              },
+              "avg_delta": {
+                "type": "number"
+              },
+              "improved_players_count": {
+                "type": "integer"
+              },
+              "declined_players_count": {
+                "type": "integer"
+              },
+              "top_projected_player": {
+                "type": "string"
+              },
+              "top_projected_winrate": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "predictions_2026": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "team",
+          "nationality",
+          "age_2026",
+          "actual_winrate",
+          "predicted_winrate",
+          "delta",
+          "trend"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "team": {
+            "type": "string"
+          },
+          "nationality": {
+            "type": "string"
+          },
+          "age_2026": {
+            "type": "integer"
+          },
+          "actual_winrate": {
+            "type": "number"
+          },
+          "predicted_winrate": {
+            "type": "number"
+          },
+          "delta": {
+            "type": "number"
+          },
+          "trend": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "squad_usage_summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "starter_participations",
+        "substitute_participations",
+        "starter_share_pct",
+        "substitute_share_pct",
+        "starter_unique_players",
+        "substitute_unique_players",
+        "starter_avg_performance",
+        "substitute_avg_performance",
+        "performance_gap_pct",
+        "teams_with_substitutes",
+        "teams_without_substitutes"
+      ],
+      "properties": {
+        "starter_participations": {
+          "type": "integer"
+        },
+        "substitute_participations": {
+          "type": "integer"
+        },
+        "starter_share_pct": {
+          "type": "number"
+        },
+        "substitute_share_pct": {
+          "type": "number"
+        },
+        "starter_unique_players": {
+          "type": "integer"
+        },
+        "substitute_unique_players": {
+          "type": "integer"
+        },
+        "starter_avg_performance": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "substitute_avg_performance": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "performance_gap_pct": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "teams_with_substitutes": {
+          "type": "integer"
+        },
+        "teams_without_substitutes": {
+          "type": "integer"
+        }
+      }
+    },
+    "squad_usage_team_breakdown": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "team",
+          "country",
+          "starter_participations",
+          "substitute_participations",
+          "starter_unique_players",
+          "substitute_unique_players",
+          "starter_avg_performance",
+          "substitute_avg_performance",
+          "substitute_share_pct",
+          "performance_gap_pct"
+        ],
+        "properties": {
+          "team": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "starter_participations": {
+            "type": "integer"
+          },
+          "substitute_participations": {
+            "type": "integer"
+          },
+          "starter_unique_players": {
+            "type": "integer"
+          },
+          "substitute_unique_players": {
+            "type": "integer"
+          },
+          "starter_avg_performance": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "substitute_avg_performance": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "substitute_share_pct": {
+            "type": "number"
+          },
+          "performance_gap_pct": {
+            "type": [
+              "number",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "team_comparison_profiles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "team": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "competitions_count": {
+            "type": "integer"
+          },
+          "teamwork_score": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "victory_rate_pct": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "position_metric": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "results_score": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "prize_amount": {
+            "type": "number"
+          },
+          "prize_share_pct": {
+            "type": "number"
+          },
+          "titles_count": {
+            "type": "integer"
+          },
+          "podium_count": {
+            "type": "integer"
+          },
+          "comparison_score": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "team",
+          "country",
+          "competitions_count",
+          "teamwork_score",
+          "victory_rate_pct",
+          "position_metric",
+          "results_score",
+          "prize_amount",
+          "prize_share_pct",
+          "titles_count",
+          "podium_count",
+          "comparison_score"
+        ]
+      },
+      "description": "Source of truth for Comparativa de equipos. Frontend uses these rows for ordering, contextual table, compareMode and profileMode."
+    },
+    "team_comparison_leaders": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "best_teamwork_team": {
+          "type": "string"
+        },
+        "best_teamwork_score": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "best_victory_team": {
+          "type": "string"
+        },
+        "best_victory_rate_pct": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "best_results_team": {
+          "type": "string"
+        },
+        "best_results_score": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "best_prize_team": {
+          "type": "string"
+        },
+        "best_prize_share_pct": {
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "best_teamwork_team",
+        "best_teamwork_score",
+        "best_victory_team",
+        "best_victory_rate_pct",
+        "best_results_team",
+        "best_results_score",
+        "best_prize_team",
+        "best_prize_share_pct"
+      ],
+      "description": "Leader summary for the four highlight cards of Comparativa de equipos using user-facing labels only."
+    },
+    "team_experience_summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "teams_count": {
+          "type": "integer"
+        },
+        "veteran_starters_count": {
+          "type": "integer"
+        },
+        "veteran_substitutes_count": {
+          "type": "integer"
+        },
+        "veteran_mixed_count": {
+          "type": "integer"
+        },
+        "avg_team_age": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "avg_veteran_age": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "avg_age_span": {
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "teams_count",
+        "veteran_starters_count",
+        "veteran_substitutes_count",
+        "veteran_mixed_count",
+        "avg_team_age",
+        "avg_veteran_age",
+        "avg_age_span"
+      ]
+    },
+    "team_experience_profiles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "team": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "veteran_player": {
+            "type": "string"
+          },
+          "veteran_age": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "veteran_role": {
+            "type": "string"
+          },
+          "veteran_performance_pct": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "team_avg_age": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "youngest_age": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "oldest_age": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "age_span": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "team_avg_performance_pct": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "veteran_vs_team_gap_pct": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "competitions_count": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "team",
+          "country",
+          "veteran_player",
+          "veteran_age",
+          "veteran_role",
+          "veteran_performance_pct",
+          "team_avg_age",
+          "youngest_age",
+          "oldest_age",
+          "age_span",
+          "team_avg_performance_pct",
+          "veteran_vs_team_gap_pct",
+          "competitions_count"
+        ]
+      },
+      "description": "Source of truth for Experiencia del equipo. Frontend uses these rows for compareMode, profileMode and the range map."
+    },
+    "team_experience_leaders": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "most_experienced_team": {
+          "type": "string"
+        },
+        "most_experienced_team_avg_age": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "best_veteran_player": {
+          "type": "string"
+        },
+        "best_veteran_team": {
+          "type": "string"
+        },
+        "best_veteran_performance_pct": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "widest_age_gap_team": {
+          "type": "string"
+        },
+        "widest_age_gap_years": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "highest_veteran_advantage_team": {
+          "type": "string"
+        },
+        "highest_veteran_advantage_pct": {
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "most_experienced_team",
+        "most_experienced_team_avg_age",
+        "best_veteran_player",
+        "best_veteran_team",
+        "best_veteran_performance_pct",
+        "widest_age_gap_team",
+        "widest_age_gap_years",
+        "highest_veteran_advantage_team",
+        "highest_veteran_advantage_pct"
+      ],
+      "description": "Leader summary for Experiencia del equipo."
+    },
+    "ml_projection_2026_summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "players_count",
+        "improved_players_count",
+        "declined_players_count",
+        "stable_players_count",
+        "best_projected_player",
+        "best_projected_winrate",
+        "biggest_improvement_player",
+        "biggest_improvement_delta",
+        "biggest_decline_player",
+        "biggest_decline_delta",
+        "best_projected_team",
+        "best_projected_team_avg_winrate"
+      ],
+      "properties": {
+        "players_count": {
+          "type": "integer"
+        },
+        "improved_players_count": {
+          "type": "integer"
+        },
+        "declined_players_count": {
+          "type": "integer"
+        },
+        "stable_players_count": {
+          "type": "integer"
+        },
+        "best_projected_player": {
+          "type": "string"
+        },
+        "best_projected_winrate": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "biggest_improvement_player": {
+          "type": "string"
+        },
+        "biggest_improvement_delta": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "biggest_decline_player": {
+          "type": "string"
+        },
+        "biggest_decline_delta": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "best_projected_team": {
+          "type": "string"
+        },
+        "best_projected_team_avg_winrate": {
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      }
+    },
+    "ml_projection_2026_players": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "player_name",
+          "team",
+          "team_country",
+          "player_nationality",
+          "age_2026",
+          "actual_winrate",
+          "predicted_winrate",
+          "delta",
+          "trend",
+          "confidence_score",
+          "confidence_band",
+          "risk_band",
+          "projected_rank"
+        ],
+        "properties": {
+          "player_name": {
+            "type": "string"
+          },
+          "team": {
+            "type": "string"
+          },
+          "team_country": {
+            "type": "string"
+          },
+          "player_nationality": {
+            "type": "string"
+          },
+          "age_2026": {
+            "type": "integer"
+          },
+          "actual_winrate": {
+            "type": "number"
+          },
+          "predicted_winrate": {
+            "type": "number"
+          },
+          "delta": {
+            "type": "number"
+          },
+          "trend": {
+            "type": "string"
+          },
+          "confidence_score": {
+            "type": "number"
+          },
+          "confidence_band": {
+            "type": "string"
+          },
+          "risk_band": {
+            "type": "string"
+          },
+          "projected_rank": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "ml_projection_2026_team_summary": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "team",
+          "country",
+          "players_count",
+          "actual_avg_winrate",
+          "projected_avg_winrate",
+          "avg_delta",
+          "improved_players_count",
+          "declined_players_count",
+          "top_projected_player",
+          "top_projected_winrate"
+        ],
+        "properties": {
+          "team": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "players_count": {
+            "type": "integer"
+          },
+          "actual_avg_winrate": {
+            "type": "number"
+          },
+          "projected_avg_winrate": {
+            "type": "number"
+          },
+          "avg_delta": {
+            "type": "number"
+          },
+          "improved_players_count": {
+            "type": "integer"
+          },
+          "declined_players_count": {
+            "type": "integer"
+          },
+          "top_projected_player": {
+            "type": "string"
+          },
+          "top_projected_winrate": {
+            "type": [
+              "number",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "ml_projection_2026_country_summary": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "country",
+          "players_count",
+          "actual_avg_winrate",
+          "projected_avg_winrate",
+          "avg_delta",
+          "improved_players_count",
+          "declined_players_count",
+          "top_projected_player",
+          "top_projected_winrate"
+        ],
+        "properties": {
+          "country": {
+            "type": "string"
+          },
+          "players_count": {
+            "type": "integer"
+          },
+          "actual_avg_winrate": {
+            "type": "number"
+          },
+          "projected_avg_winrate": {
+            "type": "number"
+          },
+          "avg_delta": {
+            "type": "number"
+          },
+          "improved_players_count": {
+            "type": "integer"
+          },
+          "declined_players_count": {
+            "type": "integer"
+          },
+          "top_projected_player": {
+            "type": "string"
+          },
+          "top_projected_winrate": {
+            "type": [
+              "number",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "ml_projection_2026_feature_importance": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "feature_key",
+          "feature_label",
+          "importance_pct",
+          "rank"
+        ],
+        "properties": {
+          "feature_key": {
+            "type": "string"
+          },
+          "feature_label": {
+            "type": "string"
+          },
+          "importance_pct": {
+            "type": "number"
+          },
+          "rank": {
+            "type": "integer"
+          }
+        }
+      }
+    }
+  }
+}
