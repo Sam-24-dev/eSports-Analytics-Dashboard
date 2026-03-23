@@ -10,6 +10,8 @@ src/etl/.env
 __pycache__/
 *.py[cod]
 *.egg-info/
+.mypy_cache/
+.ruff_cache/
 dist/
 build/
 *.egg
@@ -35,6 +37,7 @@ venv/
 .windsurf/
 tools.yaml
 PLAN_MEJORAS.md
+.cursorrules
 
 # ==========================
 # IDE
@@ -49,3 +52,38 @@ PLAN_MEJORAS.md
 # ==========================
 .DS_Store
 Thumbs.db
+
+# ==========================
+# Frontend / tooling artifacts
+# ==========================
+node_modules/
+.playwright-cli/
+artifacts/
+testsprite_tests/
+
+# ==========================
+# Logs / patches / scratch
+# ==========================
+*.log
+out.txt
+js_diff.patch
+js_diff_utf8.patch
+patch_pipeline.py
+run_keys.py
+IDE_HANDOVER_GUIDE.md
+ROADMAP_CAJA_BLANCA.md
+
+# ==========================
+# Planning / temporary docs
+# ==========================
+docs/plan_fases_*.md
+docs/*validation_report*.md
+docs/TestSprite_PRD.md
+docs/validacion_*.md
+docs/*_section_rules.md
+docs/*_rules.md
+docs/data_contract.md
+docs/data_contract.schema.json
+docs/ui_responsive_validation.md
+docs/phase4_front_mapping.md
+src/frontend/assets/data/auditoria_datos_full.md
